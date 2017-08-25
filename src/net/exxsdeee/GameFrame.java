@@ -24,5 +24,8 @@ public class GameFrame extends JFrame {
 
         //Gives the frame the correct size
         pack();
+
+        //Starts the gameloop
+        gamePanel.gameLoop();
     }
 }

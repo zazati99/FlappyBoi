@@ -1,5 +1,6 @@
 package net.exxsdeee.gameobjects;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,7 @@ public class ObjectHandler {
     public ObjectHandler(){
 
         gameObjects = new ArrayList<GameObject>();
+        gameObjects.add(new Player(50, 50, this));
 
     }
 
@@ -25,10 +27,10 @@ public class ObjectHandler {
     }
 
     // målar alla object
-    public void draw(){
+    public void render(Graphics g){
 
         for (int i = 0; i < gameObjects.size(); i ++) {
-            gameObjects.get(i).render();
+            gameObjects.get(i).render(g);
         }
 
     }

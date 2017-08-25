@@ -2,6 +2,8 @@ package net.exxsdeee.gameobjects;
 
 import net.exxsdeee.utils.Vector2;
 
+import java.awt.*;
+
 /**
  * Created by sebastianjohansson on 2017-08-25.
  */
@@ -16,7 +18,7 @@ public abstract class GameObject {
 
     }
 
-    public void render(){
+    public void render(Graphics g){
 
     }
 
