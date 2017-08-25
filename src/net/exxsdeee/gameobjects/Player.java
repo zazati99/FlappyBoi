@@ -7,8 +7,8 @@ public class Player extends GameObject {
 
     public Player(float x, float y, ObjectHandler oh) {
 
-        this.x  = x;
-        this.y = y;
+        pos.x = x;
+        pos.y = y;
 
         this.oh = oh;
 
