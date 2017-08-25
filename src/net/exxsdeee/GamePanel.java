@@ -32,4 +32,6 @@ public class GamePanel extends JPanel{
     public Dimension getPreferredSize() {
         return new Dimension(Reference.GAME_WIDTH, Reference.GAME_HEIGHT);
     }
+
+    //TODO: pick one not both
 }
