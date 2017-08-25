@@ -9,6 +9,9 @@ import java.awt.*;
  */
 public class Player extends GameObject {
 
+    private final float GRAV_ACC = 0.05f;
+    private Vector2 velocity = new Vector2(0,0);
+
     public Player(float x, float y, ObjectHandler oh) {
 
         hitBox = new Vector2(50, 50);
@@ -20,12 +23,14 @@ public class Player extends GameObject {
 
     // uppdaterar skit
     public void update(){
-        pos.x += 1;
+        velocity.y += GRAV_ACC;
+        pos.y += velocity.y;
+
     }
 
     // Målar skit
     public void render(Graphics g){
-        g.drawRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
+        g.fillRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
     }
 
 }
