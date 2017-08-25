@@ -9,6 +9,11 @@ import java.awt.*;
 
 public class GamePanel extends JPanel{
 
+    @Override
+    public Dimension getMinimumSize() {
+        return new Dimension(Reference.GAME_WIDTH, Reference.GAME_HEIGHT);
+    }
+
     public GamePanel(){
         super();
 

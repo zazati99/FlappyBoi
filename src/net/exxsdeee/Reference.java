@@ -8,6 +8,6 @@ package net.exxsdeee;
 public final class Reference {
     public static final String APPLICATION_NAME = "meme?";
     public static final int GAME_WIDTH = 800;
-    public static final int GAME_HEIGHT = 800;
+    public static final int GAME_HEIGHT = 600;
 
 }
