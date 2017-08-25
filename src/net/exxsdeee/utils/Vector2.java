@@ -13,4 +13,19 @@ public class Vector2 {
         this.y = y;
     }
 
+    public void add(Vector2 vec){
+        this.x += vec.x;
+        this.y += vec.y;
+    }
+
+    public void subtract(Vector2 vec){
+        this.x -= vec.x;
+        this.y -= vec.y;
+    }
+
+    public void set(float x, float y){
+        this.x = x;
+        this.y = y;
+    }
+
 }
