@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class Player extends GameObject {
 
-    private final float GRAV_ACC = 0.05f;
+    private final float GRAV_ACC = 0.35f;
     private Vector2 velocity = new Vector2(0,0);
 
     public Player(float x, float y, ObjectHandler oh) {
@@ -24,7 +24,9 @@ public class Player extends GameObject {
     // uppdaterar skit
     public void update(){
         velocity.y += GRAV_ACC;
-        pos.y += velocity.y;
+
+        //pos.y += velocity.y;
+        pos.add(velocity); // ser tuffare ut + att ska endå lägga på x velocity
 
     }
 
