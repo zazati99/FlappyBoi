@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ObjectHandler {
 
     ArrayList<GameObject> obstacles;
-    Player player;
+    public Player player;
 
     public ObjectHandler(){
 
@@ -41,10 +41,6 @@ public class ObjectHandler {
         for (int i = 0; i < obstacles.size(); i ++) {
             obstacles.get(i).render(g);
         }
-
-    }
-
-    public static void flap(){
 
     }
 

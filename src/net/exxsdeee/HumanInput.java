@@ -1,7 +1,5 @@
 package net.exxsdeee;
 
-import net.exxsdeee.gameobjects.ObjectHandler;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,7 +19,7 @@ public class HumanInput implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            ObjectHandler.flap();
+            GameFrame.gamePanel.oh.player.flap();
         }
     }
 

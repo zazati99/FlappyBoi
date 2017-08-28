@@ -37,7 +37,7 @@ public class Player extends GameObject {
     }
 
     public void flap(){
-        velocity.y = 5;
+        velocity.y = -5;
     }
 
 }
