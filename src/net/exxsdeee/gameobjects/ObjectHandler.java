@@ -23,7 +23,10 @@ public class ObjectHandler {
     // uppdaterar alla objekt
     public void update(){
 
+        player.update();
+
         for (int i = 0; i < obstacles.size(); i ++) {
+
             obstacles.get(i).update();
 
         }
@@ -32,6 +35,8 @@ public class ObjectHandler {
 
     // målar alla object
     public void render(Graphics g){
+
+        player.render(g);
 
         for (int i = 0; i < obstacles.size(); i ++) {
             obstacles.get(i).render(g);
