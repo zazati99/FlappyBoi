@@ -36,4 +36,8 @@ public class Player extends GameObject {
         g.fillRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
     }
 
+    public void flap(){
+        velocity.y = 5;
+    }
+
 }
