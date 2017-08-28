@@ -21,6 +21,7 @@ public class GameFrame extends JFrame {
         //Initialize and add the game panel to the frame
         gamePanel = new GamePanel();
         this.add(gamePanel);
+        this.addKeyListener(new HumanInput());
 
         //Gives the frame the correct size
         pack();

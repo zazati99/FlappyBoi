@@ -11,12 +11,9 @@ import java.awt.*;
 
 public class GamePanel extends JPanel{
 
-    //hur lång tid förra framen tog, i sekunder.
-    //TODO: ge objekten tillgång till variabeln deltaTime. kanske som parameter i update? eller statisk men det är fult
-    public float deltaTime = 0;
-
     boolean gameRunning;
     ObjectHandler oh;
+
 
     public GamePanel(){
         super();
@@ -48,17 +45,17 @@ public class GamePanel extends JPanel{
         final long OPTIMAL_TIME = 1000000000/TARGET_FPS;
 
         while(gameRunning) {
-
             long now = System.nanoTime();
-            deltaTime = (now - lastLoopTime)/1000000000;
             lastLoopTime = now;
 
+
             oh.update();
+
             repaint();
+
 
             try { Thread.sleep((lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000);}
             catch(InterruptedException ex) { Thread.currentThread().interrupt();}
-
         }
 
     }

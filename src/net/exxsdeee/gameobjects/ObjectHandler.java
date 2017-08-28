@@ -39,6 +39,8 @@ public class ObjectHandler {
 
     }
 
+    public static void flap(){
 
+    }
 
 }
