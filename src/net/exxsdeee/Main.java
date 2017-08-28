@@ -4,8 +4,8 @@ public class Main {
 
     private static GameFrame gameFrame;
     public static void main(String[] args) {
-        gameFrame = new GameFrame();
 
+        gameFrame = new GameFrame();
 
     }
 }

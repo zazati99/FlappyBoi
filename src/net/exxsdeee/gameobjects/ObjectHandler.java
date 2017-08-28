@@ -8,20 +8,24 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
-    ArrayList<GameObject> gameObjects;
+    ArrayList<GameObject> obstacles;
+    Player player;
 
     public ObjectHandler(){
 
-        gameObjects = new ArrayList<GameObject>();
-        gameObjects.add(new Player(50, 50, this));
+        obstacles = new ArrayList<GameObject>();
+        player = new Player(50, 50, this);
+
+        obstacles.add(new Obstacle(300, 50, this));
 
     }
 
     // uppdaterar alla objekt
     public void update(){
 
-        for (int i = 0; i < gameObjects.size(); i ++) {
-            gameObjects.get(i).update();
+        for (int i = 0; i < obstacles.size(); i ++) {
+            obstacles.get(i).update();
+
         }
 
     }
@@ -29,8 +33,8 @@ public class ObjectHandler {
     // målar alla object
     public void render(Graphics g){
 
-        for (int i = 0; i < gameObjects.size(); i ++) {
-            gameObjects.get(i).render(g);
+        for (int i = 0; i < obstacles.size(); i ++) {
+            obstacles.get(i).render(g);
         }
 
     }
