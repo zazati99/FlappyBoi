@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by sebastianjohansson on 2017-08-28.
  */
 public class Obstacle extends GameObject{
-
+    private final Color COL = Color.black;
     public Obstacle(float x, float y, ObjectHandler oh){
 
         pos = new Vector2(x, y);
@@ -23,6 +23,7 @@ public class Obstacle extends GameObject{
     }
 
     public void render(Graphics g){
+        g.setColor(COL);
         g.fillRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
     }
 

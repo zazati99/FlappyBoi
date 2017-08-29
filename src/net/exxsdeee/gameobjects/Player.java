@@ -9,7 +9,8 @@ import java.awt.*;
  */
 public class Player extends GameObject {
 
-    private final float GRAV_ACC = 0.30f;
+    private final Color COL = new Color(69, 186, 65);
+    private final float GRAV_ACC = 0.40f;
     private Vector2 velocity = new Vector2(0,0);
 
     public Player(float x, float y, ObjectHandler oh) {
@@ -33,11 +34,13 @@ public class Player extends GameObject {
 
     // Målar skit
     public void render(Graphics g){
+
+        g.setColor(this.COL);
         g.fillRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
     }
 
     public void flap(){
-        velocity.y = -7;
+        velocity.y = -9;
     }
 
 }
