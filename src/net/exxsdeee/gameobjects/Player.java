@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class Player extends GameObject {
 
-    private final float GRAV_ACC = 0.25f;
+    private final float GRAV_ACC = 0.30f;
     private Vector2 velocity = new Vector2(0,0);
 
     public Player(float x, float y, ObjectHandler oh) {
@@ -37,7 +37,7 @@ public class Player extends GameObject {
     }
 
     public void flap(){
-        velocity.y = -5;
+        velocity.y = -7;
     }
 
 }
