@@ -22,7 +22,7 @@ public class Obstacle extends GameObject{
 
     public void update(){
 
-        pos.x -= 2;
+        pos.x -= 3;
 
     }
 
