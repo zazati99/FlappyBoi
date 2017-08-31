@@ -34,6 +34,11 @@ public class ObjectHandler {
 
             temp.update();
 
+            if (collisionCheck(player, temp)){
+                obstacles.clear();
+                return;
+            }
+
             if(temp.pos.x <= -200){
 
                 if(temp.pos.y <= 0){
@@ -54,6 +59,20 @@ public class ObjectHandler {
             obstacles.get(i).render(g);
         }
 
+    }
+
+    boolean collisionCheck(GameObject o1, GameObject o2){
+
+        if (o1.pos.x < o2.pos.x + o2.hitBox.x &&
+                o1.pos.x + o1.hitBox.x > o2.pos.x &&
+                o1.pos.y < o2.pos.y + o2.hitBox.y &&
+                o1.hitBox.y + o1.pos.y > o2.pos.y){
+
+            return true;
+
+        }
+
+        return false;
     }
 
     void generateObstacles(int x, ObjectHandler oh){
