@@ -29,6 +29,12 @@ public class ObjectHandler {
 
         player.update();
 
+        //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
+        if(player.pos.y <= -200 || player.pos.y > Reference.GAME_HEIGHT-player.hitBox.y){
+            die();
+            return;
+        }
+
         for (int i = 0; i < obstacles.size(); i++) {
             GameObject temp = obstacles.get(i);
 
