@@ -13,6 +13,7 @@ public class Obstacle extends GameObject{
     public static final int MIN_BOTTOM = 100;//Hur långt hålets kant får vara från botten av skärmen
     public static final int MIN_TOP = 100;//hur långt hålets kant får vara från botten av skärmen
     public static final int GENPOINT_DISTANCE = 25;
+
     public Obstacle(float x, float y, ObjectHandler oh){
 
         pos = new Vector2(x, y);

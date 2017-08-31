@@ -57,9 +57,11 @@ public class ObjectHandler {
     }
 
     void generateObstacles(int x, ObjectHandler oh){
-        int yPos = Obstacle.MIN_TOP + (int)(Math.random() * Reference.GAME_HEIGHT - Obstacle.HOLE_SIZE-Obstacle.MIN_BOTTOM-Obstacle.MIN_TOP);
+        int yPos = Obstacle.MIN_TOP + (int)(Math.random() * (Reference.GAME_HEIGHT - Obstacle.HOLE_SIZE-Obstacle.MIN_BOTTOM-Obstacle.MIN_TOP));
+        System.out.println(yPos);
         yPos -= yPos%Obstacle.GENPOINT_DISTANCE;
-
+        System.out.println(yPos);
+        System.out.println();
 
         obstacles.add(new Obstacle(x,yPos-600, oh));
         obstacles.add(new Obstacle(x, yPos + Obstacle.HOLE_SIZE, oh));
