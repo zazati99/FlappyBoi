@@ -35,7 +35,7 @@ public class ObjectHandler {
             temp.update();
 
             if (collisionCheck(player, temp)){
-                obstacles.clear();
+                die();
                 return;
             }
 
@@ -80,7 +80,14 @@ public class ObjectHandler {
         yPos -= yPos%Obstacle.GENPOINT_DISTANCE;
 
 
-        obstacles.add(new Obstacle(x,yPos-600, oh));
+        obstacles.add(new Obstacle(x,yPos-600, oh)); //600 is hard-coded height of obstacles.
         obstacles.add(new Obstacle(x, yPos + Obstacle.HOLE_SIZE, oh));
+    }
+
+    void die(){
+        obstacles.clear();
+        generateObstacles(600,this);
+        generateObstacles(1100,this);
+        player = new Player(50,50, this);
     }
 }
