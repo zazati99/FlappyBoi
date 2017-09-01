@@ -1,6 +1,7 @@
 package net.exxsdeee;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by kasperdejke on 2017-08-25.
@@ -25,6 +26,10 @@ public class GameFrame extends JFrame {
 
         //Gives the frame the correct size
         pack();
+
+        //Center the frame on the display
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
         //Starts the gameloop
         gamePanel.gameLoop();
