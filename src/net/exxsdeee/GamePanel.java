@@ -12,8 +12,8 @@ import java.awt.*;
 public class GamePanel extends JPanel{
 
     boolean gameRunning;
-    final boolean training = true;
-    public   ObjectHandler oh;
+    final boolean training = false;
+    public ObjectHandler oh;
 
 
     public GamePanel(){
@@ -42,7 +42,7 @@ public class GamePanel extends JPanel{
     public void gameLoop(){
 
         long lastLoopTime = System.nanoTime();
-        final int TARGET_FPS = 120;
+        final int TARGET_FPS = 60;
         final long OPTIMAL_TIME = 1000000000/TARGET_FPS;
 
         while(gameRunning) {
@@ -63,6 +63,7 @@ public class GamePanel extends JPanel{
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
+
             }
         }
 
