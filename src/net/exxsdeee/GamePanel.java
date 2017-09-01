@@ -12,7 +12,7 @@ import java.awt.*;
 public class GamePanel extends JPanel{
 
     boolean gameRunning;
-    public ObjectHandler oh;
+    public   ObjectHandler oh;
 
 
     public GamePanel(){

@@ -10,7 +10,7 @@ import java.awt.*;
 public class Player extends GameObject {
 
     private final Color COL = new Color(69, 186, 65);
-    private final float GRAV_ACC = 0.40f;
+    private final float GRAV_ACC = 0.50f;
     private Vector2 velocity = new Vector2(0,0);
 
     public Player(float x, float y, ObjectHandler oh) {
@@ -40,7 +40,7 @@ public class Player extends GameObject {
     }
 
     public void flap(){
-        velocity.y = -9;
+        velocity.y = -11;
     }
 
 }

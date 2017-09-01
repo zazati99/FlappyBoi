@@ -20,7 +20,8 @@ public class ObjectHandler {
         player = new Player(100, Reference.GAME_HEIGHT/2, this);
 
         generateObstacles(600,this);
-        generateObstacles(1100,this);
+        generateObstacles(950,this);
+        generateObstacles(1300,this);
 
     }
 
@@ -45,7 +46,7 @@ public class ObjectHandler {
                 return;
             }
 
-            if(temp.pos.x <= -200){
+            if(temp.pos.x <= -250){
 
                 if(temp.pos.y <= 0){
                     generateObstacles(Reference.GAME_WIDTH, this);
@@ -82,7 +83,7 @@ public class ObjectHandler {
     }
 
     void generateObstacles(int x, ObjectHandler oh){
-        int yPos = Obstacle.MIN_TOP + (int)(Math.random() * (Reference.GAME_HEIGHT -Obstacle.MIN_BOTTOM-Obstacle.MIN_TOP- Obstacle.HOLE_SIZE));
+        int yPos = Obstacle.MIN_TOP + (int)(Math.random() * (Reference.GAME_HEIGHT -Obstacle.MIN_BOTTOM-Obstacle.MIN_TOP- Obstacle.HOLE_SIZE + Obstacle.GENPOINT_DISTANCE));
         yPos -= yPos%Obstacle.GENPOINT_DISTANCE;
 
 
@@ -93,7 +94,8 @@ public class ObjectHandler {
     void die(){
         obstacles.clear();
         generateObstacles(600,this);
-        generateObstacles(1100,this);
+        generateObstacles(950,this);
+        generateObstacles(1300,this);
         player = new Player(100, Reference.GAME_HEIGHT/2, this);
     }
 }
