@@ -12,6 +12,7 @@ import java.awt.*;
 public class GamePanel extends JPanel{
 
     boolean gameRunning;
+    final boolean training = true;
     public   ObjectHandler oh;
 
 
@@ -41,21 +42,28 @@ public class GamePanel extends JPanel{
     public void gameLoop(){
 
         long lastLoopTime = System.nanoTime();
-        final int TARGET_FPS = 60;
+        final int TARGET_FPS = 120;
         final long OPTIMAL_TIME = 1000000000/TARGET_FPS;
 
         while(gameRunning) {
-            long now = System.nanoTime();
-            lastLoopTime = now;
 
+            if (!training) {
+                long now = System.nanoTime();
+                lastLoopTime = now;
+            }
 
             oh.update();
 
-            repaint();
+            if (!training) {
 
+                repaint();
 
-            try { Thread.sleep((lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000);}
-            catch(InterruptedException ex) { Thread.currentThread().interrupt();}
+                try {
+                    Thread.sleep((lastLoopTime - System.nanoTime() + OPTIMAL_TIME) / 1000000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
         }
 
     }
