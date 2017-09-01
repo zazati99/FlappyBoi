@@ -17,7 +17,7 @@ public class ObjectHandler {
     public ObjectHandler(){
 
         obstacles = new ArrayList<GameObject>();
-        player = new Player(50, 50, this);
+        player = new Player(100, Reference.GAME_HEIGHT/2, this);
 
         generateObstacles(600,this);
         generateObstacles(1100,this);
@@ -94,6 +94,6 @@ public class ObjectHandler {
         obstacles.clear();
         generateObstacles(600,this);
         generateObstacles(1100,this);
-        player = new Player(50,50, this);
+        player = new Player(100, Reference.GAME_HEIGHT/2, this);
     }
 }
