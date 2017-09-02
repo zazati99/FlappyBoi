@@ -1,6 +1,7 @@
 package net.exxsdeee.gameobjects;
 
 import net.exxsdeee.Reference;
+import net.exxsdeee.ui.GameFrame;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,19 +11,14 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
-    ArrayList<GameObject> obstacles;
+    ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
     public Player player;
+    int framesSurvived = 0;
 
 
     public ObjectHandler(){
 
-        obstacles = new ArrayList<GameObject>();
-        player = new Player(100, Reference.GAME_HEIGHT/2, this);
-
-        generateObstacles(600,this);
-        generateObstacles(950,this);
-        generateObstacles(1300,this);
-
+        birth();
     }
 
     // uppdaterar alla objekt
@@ -32,7 +28,7 @@ public class ObjectHandler {
 
         //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
         if(player.pos.y <= -200 || player.pos.y > Reference.GAME_HEIGHT-player.hitBox.y){
-            die();
+            birth();
             return;
         }
 
@@ -42,7 +38,7 @@ public class ObjectHandler {
             temp.update();
 
             if (collisionCheck(player, temp)){
-                die();
+                birth();
                 return;
             }
 
@@ -54,7 +50,7 @@ public class ObjectHandler {
                 obstacles.remove(i);
             }
         }
-
+        GameFrame.infoPanel.updateScore((int)Math.floor(++framesSurvived/60));
     }
 
     // målar alla object
@@ -70,16 +66,11 @@ public class ObjectHandler {
 
     boolean collisionCheck(GameObject o1, GameObject o2){
 
-        if (o1.pos.x < o2.pos.x + o2.hitBox.x &&
+        return o1.pos.x < o2.pos.x + o2.hitBox.x &&
                 o1.pos.x + o1.hitBox.x > o2.pos.x &&
                 o1.pos.y < o2.pos.y + o2.hitBox.y &&
-                o1.hitBox.y + o1.pos.y > o2.pos.y){
+                o1.hitBox.y + o1.pos.y > o2.pos.y;
 
-            return true;
-
-        }
-
-        return false;
     }
 
     void generateObstacles(int x, ObjectHandler oh){
@@ -91,11 +82,13 @@ public class ObjectHandler {
         obstacles.add(new Obstacle(x, yPos + Obstacle.HOLE_SIZE, oh));
     }
 
-    void die(){
+    void birth(){
         obstacles.clear();
         generateObstacles(600,this);
         generateObstacles(950,this);
         generateObstacles(1300,this);
         player = new Player(100, Reference.GAME_HEIGHT/2, this);
+        framesSurvived = 0;
+
     }
 }

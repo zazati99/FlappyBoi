@@ -1,5 +1,7 @@
 package net.exxsdeee;
 
+import net.exxsdeee.ui.GameFrame;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

@@ -1,5 +1,6 @@
-package net.exxsdeee;
+package net.exxsdeee.ui;
 
+import net.exxsdeee.Reference;
 import net.exxsdeee.gameobjects.ObjectHandler;
 
 import javax.swing.*;
