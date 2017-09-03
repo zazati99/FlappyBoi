@@ -42,7 +42,7 @@ public class ObjectHandler {
                 return;
             }
 
-            if(temp.pos.x <= -250){
+            if(temp.pos.x <= -250){  //OBS:  Avståndet mellan de gamla och nya obstaclerna måste vara delbart med obstacles hastighet.
 
                 if(temp.pos.y <= 0){
                     generateObstacles(Reference.GAME_WIDTH, this);
