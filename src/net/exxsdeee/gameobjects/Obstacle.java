@@ -30,9 +30,6 @@ public class Obstacle extends GameObject{
     public void render(Graphics g){
         g.setColor(COL);
         g.fillRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
-
-        g.setColor(Color.ORANGE);
-        g.drawRect((int)pos.x, (int)pos.y, (int)hitBox.x, (int)hitBox.y);
     }
 
 }
