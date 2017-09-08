@@ -10,7 +10,7 @@ import java.awt.*;
 public class Obstacle extends GameObject{
     private final Color COL = Color.black;
     public static final int HOLE_SIZE = 200;
-    public static final int MIN_BOTTOM = 75;//Hur långt hålets kant får vara från botten av skärmen
+    public static final int MIN_BOTTOM = 75 ;//Hur långt hålets kant får vara från botten av skärmen
     public static final int MIN_TOP = 75;//hur långt hålets kant får vara från botten av skärmen
     public static final int GENPOINT_DISTANCE = 25;
 

@@ -38,10 +38,8 @@ public class GameFrame extends JFrame {
 
 
         //Gives the frame the correct size
+        //TODO: Fix this packkkk thing it takes several seconds wtf?
         pack();
-        //getContentPane().setSize(new Dimension(Reference.GAME_WIDTH, Reference.GAME_HEIGHT + 100));
-
-
 
         //Center the frame on the display
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

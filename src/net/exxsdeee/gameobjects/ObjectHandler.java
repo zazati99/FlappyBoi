@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class ObjectHandler {
 
     ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
-    public Player player;
+    Player player;
+
     int framesSurvived = 0;
 
 
@@ -89,6 +90,21 @@ public class ObjectHandler {
         generateObstacles(1300,this);
         player = new Player(100, Reference.GAME_HEIGHT/2, this);
         framesSurvived = 0;
+    }
 
+    public ArrayList<GameObject> getObstacles() {
+        return obstacles;
+    }
+
+    public void setObstacles(ArrayList<GameObject> obstacles) {
+        this.obstacles = obstacles;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

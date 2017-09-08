@@ -15,9 +15,9 @@ public class InfoPanel extends JPanel {
     JLabel score;
     public InfoPanel(){
         this.setVisible(true);
-
         //Initialize and add score
         score = new JLabel("Score: 0");
+        score.setFont(new Font("Comic Sans MS", Font.PLAIN, 36));
         score.setVisible(true);
         this.add(score);
     }

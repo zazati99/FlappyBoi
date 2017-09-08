@@ -20,8 +20,8 @@ public class HumanInput implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            GameFrame.gamePanel.oh.player.flap();
+        if(e.getKeyCode() == KeyEvent.VK_SPACE ||e.getKeyCode() == KeyEvent.VK_X){
+            GameFrame.gamePanel.oh.getPlayer().flap();
         }
     }
 
