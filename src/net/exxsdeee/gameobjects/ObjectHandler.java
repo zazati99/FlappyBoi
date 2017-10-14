@@ -2,6 +2,7 @@ package net.exxsdeee.gameobjects;
 
 import net.exxsdeee.Reference;
 import net.exxsdeee.ui.GameFrame;
+import net.exxsdeee.utils.Vector2;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,11 +12,15 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
+    private final Color infoScreenColor = new Color(0.8f, 0.8f, 0.8f);
+    private final Vector2 infoScreenSize= new Vector2(350,300);
+    int finalScore =0;
     ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
     Player player;
 
     int framesSurvived = 0;
 
+    Boolean infoScreen = false;
 
     public ObjectHandler(){
 
@@ -25,42 +30,49 @@ public class ObjectHandler {
     // uppdaterar alla objekt
     public void update(){
 
-        player.update();
+        if(!infoScreen) {
+            player.update();
 
-        //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
-        if(player.pos.y <= -200 || player.pos.y > Reference.GAME_HEIGHT-player.hitBox.y){
-            birth();
-            return;
-        }
-
-        for (int i = 0; i < obstacles.size(); i++) {
-            GameObject temp = obstacles.get(i);
-
-            temp.update();
-
-            if (collisionCheck(player, temp)){
+            //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
+            if (player.pos.y <= -200 || player.pos.y > Reference.GAME_HEIGHT - player.hitBox.y) {
                 birth();
                 return;
             }
 
-            if(temp.pos.x <= -250){  //OBS:  Avståndet mellan de gamla och nya obstaclerna måste vara delbart med obstacles hastighet.
+            for (int i = 0; i < obstacles.size(); i++) {
+                GameObject temp = obstacles.get(i);
 
-                if(temp.pos.y <= 0){
-                    generateObstacles(Reference.GAME_WIDTH, this);
+                temp.update();
+
+                if (collisionCheck(player, temp)) {
+                    death();
+                    return;
                 }
-                obstacles.remove(i);
+
+                if (temp.pos.x <= -250) {  //OBS:  Avståndet mellan de gamla och nya obstaclerna måste vara delbart med obstacles hastighet.
+
+                    if (temp.pos.y <= 0) {
+                        generateObstacles(Reference.GAME_WIDTH, this);
+                    }
+                    obstacles.remove(i);
+                }
             }
+            GameFrame.infoPanel.updateScore((int) Math.floor(++framesSurvived / 60));
         }
-        GameFrame.infoPanel.updateScore((int)Math.floor(++framesSurvived/60));
     }
 
     // målar alla object
     public void render(Graphics g){
-
         player.render(g);
 
         for (int i = 0; i < obstacles.size(); i ++) {
             obstacles.get(i).render(g);
+        }
+        if(infoScreen){
+            g.setColor(infoScreenColor);
+            g.fillRect((int)((Reference.GAME_WIDTH - infoScreenSize.x) / 2), (int)((Reference.GAME_HEIGHT-infoScreenSize.y )/2), (int)infoScreenSize.x, (int)infoScreenSize.y);
+            g.setColor(Color.black);
+            g.drawString("dank", Reference.GAME_HEIGHT/ 2 , Reference.GAME_WIDTH/2-50);
         }
 
     }
@@ -92,19 +104,17 @@ public class ObjectHandler {
         framesSurvived = 0;
     }
 
-    public ArrayList<GameObject> getObstacles() {
-        return obstacles;
+    void death(){
+        infoScreen = true;
+        birth();
     }
 
-    public void setObstacles(ArrayList<GameObject> obstacles) {
-        this.obstacles = obstacles;
+    public ArrayList<GameObject> getObstacles() {
+        return obstacles;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
 }

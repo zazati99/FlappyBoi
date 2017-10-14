@@ -55,20 +55,18 @@ public class GamePanel extends JPanel{
 
             oh.update();
 
-            if (!training) {
+            repaint();
 
-                repaint();
-
-                try {
-                    Thread.sleep((lastLoopTime - System.nanoTime() + OPTIMAL_TIME) / 1000000);
-                } catch (InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
-
+            try {
+                Thread.sleep((lastLoopTime - System.nanoTime() + OPTIMAL_TIME) / 1000000);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
             }
-        }
 
+        }
     }
 
-
 }
+
+
+
