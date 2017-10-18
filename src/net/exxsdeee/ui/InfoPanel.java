@@ -12,12 +12,14 @@ import java.awt.*;
 
 public class InfoPanel extends JPanel {
 
+    Font textFont = new Font("Comic Sans MS", Font.PLAIN, 36);
+
     JLabel score;
     public InfoPanel(){
         this.setVisible(true);
         //Initialize and add score
         score = new JLabel("Score: 0");
-        score.setFont(new Font("Comic Sans MS", Font.PLAIN, 36));
+        score.setFont(textFont);
         score.setVisible(true);
         this.add(score);
     }

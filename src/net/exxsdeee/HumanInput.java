@@ -13,6 +13,8 @@ import java.awt.event.KeyListener;
  * Input, human is playing. Mostly for testing.
  */
 public class HumanInput implements KeyListener{
+
+    private boolean keyDownFlag = false;
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -20,13 +22,19 @@ public class HumanInput implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE ||e.getKeyCode() == KeyEvent.VK_X){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE ||e.getKeyCode() == KeyEvent.VK_X )&& !keyDownFlag){
+            if(GameFrame.gamePanel.oh.getInfoScreen()){
+                GameFrame.gamePanel.oh.newGame();
+                GameFrame.gamePanel.oh.startGame();
+            }
             GameFrame.gamePanel.oh.getPlayer().flap();
         }
+
+        keyDownFlag = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        keyDownFlag = false;
     }
 }

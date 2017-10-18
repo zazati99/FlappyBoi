@@ -12,19 +12,21 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
+    private final String infoScreenText = "Press space to jump!";
+
     private final Color infoScreenColor = new Color(0.8f, 0.8f, 0.8f);
     private final Vector2 infoScreenSize= new Vector2(350,300);
-    int finalScore =0;
-    ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
+    ArrayList<GameObject> obstacles = new ArrayList<>();
     Player player;
 
     int framesSurvived = 0;
 
+
     Boolean infoScreen = false;
 
     public ObjectHandler(){
-
-        birth();
+        newGame();
+        player.flap();
     }
 
     // uppdaterar alla objekt
@@ -35,7 +37,7 @@ public class ObjectHandler {
 
             //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
             if (player.pos.y <= -200 || player.pos.y > Reference.GAME_HEIGHT - player.hitBox.y) {
-                birth();
+                death();
                 return;
             }
 
@@ -54,7 +56,8 @@ public class ObjectHandler {
                     if (temp.pos.y <= 0) {
                         generateObstacles(Reference.GAME_WIDTH, this);
                     }
-                    obstacles.remove(i);
+                    obstacles.remove(temp);
+                    i--; //Index flyttas bakåt när man tar bort ett objekt.
                 }
             }
             GameFrame.infoPanel.updateScore((int) Math.floor(++framesSurvived / 60));
@@ -72,7 +75,7 @@ public class ObjectHandler {
             g.setColor(infoScreenColor);
             g.fillRect((int)((Reference.GAME_WIDTH - infoScreenSize.x) / 2), (int)((Reference.GAME_HEIGHT-infoScreenSize.y )/2), (int)infoScreenSize.x, (int)infoScreenSize.y);
             g.setColor(Color.black);
-            g.drawString("dank", Reference.GAME_HEIGHT/ 2 , Reference.GAME_WIDTH/2-50);
+            g.drawString(infoScreenText, Reference.GAME_HEIGHT/ 2 , Reference.GAME_WIDTH/2-50);
         }
 
     }
@@ -95,7 +98,7 @@ public class ObjectHandler {
         obstacles.add(new Obstacle(x, yPos + Obstacle.HOLE_SIZE, oh));
     }
 
-    void birth(){
+    public void newGame(){
         obstacles.clear();
         generateObstacles(600,this);
         generateObstacles(950,this);
@@ -104,17 +107,21 @@ public class ObjectHandler {
         framesSurvived = 0;
     }
 
-    void death(){
-        infoScreen = true;
-        birth();
+    public void startGame(){
+        infoScreen = false;
     }
 
-    public ArrayList<GameObject> getObstacles() {
-        return obstacles;
+    void death(){
+        infoScreen = true;
     }
+
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Boolean getInfoScreen() {
+        return infoScreen;
     }
 
 }
