@@ -19,7 +19,16 @@ public class ObjectHandler {
     ArrayList<GameObject> obstacles = new ArrayList<>();
     Player player;
 
-    int framesSurvived = 0;
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+        GameFrame.infoPanel.updateScore(score);
+    }
+
+    int score = 0;
 
 
     Boolean infoScreen = false;
@@ -60,7 +69,6 @@ public class ObjectHandler {
                     i--; //Index flyttas bakåt när man tar bort ett objekt.
                 }
             }
-            GameFrame.infoPanel.updateScore((int) Math.floor(++framesSurvived / 60));
         }
     }
 
@@ -104,7 +112,7 @@ public class ObjectHandler {
         generateObstacles(950,this);
         generateObstacles(1300,this);
         player = new Player(100, Reference.GAME_HEIGHT/2, this);
-        framesSurvived = 0;
+        setScore(0);
     }
 
     public void startGame(){

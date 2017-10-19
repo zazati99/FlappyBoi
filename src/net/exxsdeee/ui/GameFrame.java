@@ -24,16 +24,16 @@ public class GameFrame extends JFrame {
 
         getContentPane().setLayout(new BorderLayout());
 
+
+        //Initialize and add the InfoPanel to the frame
+        infoPanel = new InfoPanel();
+        this.add(infoPanel, BorderLayout.SOUTH);
+
         //Initialize and add the game panel to the frame
         gamePanel = new GamePanel();
         this.add(gamePanel, BorderLayout.NORTH);
         this.addKeyListener(new HumanInput());
 
-
-
-        //Initialize and add the InfoPanel to the frame
-        infoPanel = new InfoPanel();
-        this.add(infoPanel, BorderLayout.SOUTH);
 
 
 
