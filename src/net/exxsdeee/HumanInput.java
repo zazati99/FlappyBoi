@@ -8,9 +8,6 @@ import java.awt.event.KeyListener;
 
 /**
  * Created by kasperdejke on 2017-08-28.
- *
- *
- * Input, human is playing. Mostly for testing.
  */
 public class HumanInput implements KeyListener{
 

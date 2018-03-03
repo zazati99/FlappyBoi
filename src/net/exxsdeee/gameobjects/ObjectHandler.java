@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
-    private final String infoScreenText = "Press space to jump!";
+    private final String infoScreenText = "Press space to retry!";
 
     private final Color infoScreenColor = new Color(0.8f, 0.8f, 0.8f);
     private final Vector2 infoScreenSize= new Vector2(350,300);
