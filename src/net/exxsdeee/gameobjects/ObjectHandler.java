@@ -25,7 +25,9 @@ public class ObjectHandler {
 
     public void setScore(int score) {
         this.score = score;
-        GameFrame.infoPanel.updateScore(score);
+        if(!infoScreen){
+            GameFrame.infoPanel.updateScore(score);
+        }
     }
 
     int score = 0;
@@ -79,12 +81,12 @@ public class ObjectHandler {
         for (int i = 0; i < obstacles.size(); i ++) {
             obstacles.get(i).render(g);
         }
-        if(infoScreen){
+        /*if(infoScreen){
             g.setColor(infoScreenColor);
             g.fillRect((int)((Reference.GAME_WIDTH - infoScreenSize.x) / 2), (int)((Reference.GAME_HEIGHT-infoScreenSize.y )/2), (int)infoScreenSize.x, (int)infoScreenSize.y);
             g.setColor(Color.black);
             g.drawString(infoScreenText, Reference.GAME_HEIGHT/ 2 , Reference.GAME_WIDTH/2-50);
-        }
+        }*/
 
     }
 
@@ -117,10 +119,16 @@ public class ObjectHandler {
 
     public void startGame(){
         infoScreen = false;
+        GameFrame.infoPanel.updateScore(0);
     }
 
     void death(){
+
+
         infoScreen = true;
+        GameFrame.infoPanel.updateScore(score);
+
+        newGame();
     }
 
 

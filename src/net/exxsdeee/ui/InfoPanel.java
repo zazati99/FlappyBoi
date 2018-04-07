@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class InfoPanel extends JPanel {
 
-    Font textFont = new Font("Comic Sans MS", Font.PLAIN, 36);
+    Font textFont = new Font("Comic Sans MS", Font.PLAIN, 24);
 
     JLabel score;
     public InfoPanel(){
@@ -25,7 +25,17 @@ public class InfoPanel extends JPanel {
     }
 
     public void updateScore(int newScore){
-        score.setText("Score: " + newScore);
+        try {
+            if (GameFrame.gamePanel.oh.getInfoScreen()) {
+                score.setText("<html>Final Score: " + newScore + "<br>Space to retry</html>");
+                return;
+            }
+        }
+        catch (NullPointerException e){
+            
+        }
+        score.setText("Score: "+ newScore);
+
     }
 
     @Override
