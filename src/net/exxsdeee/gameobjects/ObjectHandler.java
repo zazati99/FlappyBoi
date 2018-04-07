@@ -12,12 +12,7 @@ import java.util.ArrayList;
  */
 public class ObjectHandler {
 
-    public enum State{
-        ALIVE, FALLING, DEAD
-    }
-
-    public State state = State.ALIVE;
-    private final String infoScreenText = "Press space to jump!";
+    private final String infoScreenText = "Press space to retry!";
 
     private final Color infoScreenColor = new Color(0.8f, 0.8f, 0.8f);
     private final Vector2 infoScreenSize= new Vector2(350,300);
@@ -35,6 +30,9 @@ public class ObjectHandler {
 
     int score = 0;
 
+
+    Boolean infoScreen = false;
+
     public ObjectHandler(){
         newGame();
         player.flap();
@@ -43,7 +41,7 @@ public class ObjectHandler {
     // uppdaterar alla objekt
     public void update(){
 
-        if(state == State.ALIVE) {
+        if(!infoScreen) {
             player.update();
 
             //DIE om spelaren lämnar skärmen. Spelaren kan vara upp till 200 pixlar över skärmen utan att DIE.
@@ -58,7 +56,7 @@ public class ObjectHandler {
                 temp.update();
 
                 if (collisionCheck(player, temp)) {
-                    startFall();
+                    death();
                     return;
                 }
 
@@ -72,14 +70,6 @@ public class ObjectHandler {
                 }
             }
         }
-
-        else if ( state == State.FALLING){
-            player.update();
-
-            if(player.pos.y > Reference.GAME_HEIGHT -player.hitBox.y){
-
-            }
-        }
     }
 
     // målar alla object
@@ -89,12 +79,13 @@ public class ObjectHandler {
         for (int i = 0; i < obstacles.size(); i ++) {
             obstacles.get(i).render(g);
         }
-        if(state == State.DEAD){
+        if(infoScreen){
             g.setColor(infoScreenColor);
             g.fillRect((int)((Reference.GAME_WIDTH - infoScreenSize.x) / 2), (int)((Reference.GAME_HEIGHT-infoScreenSize.y )/2), (int)infoScreenSize.x, (int)infoScreenSize.y);
             g.setColor(Color.black);
             g.drawString(infoScreenText, Reference.GAME_HEIGHT/ 2 , Reference.GAME_WIDTH/2-50);
         }
+
     }
 
     boolean collisionCheck(GameObject o1, GameObject o2){
@@ -125,17 +116,11 @@ public class ObjectHandler {
     }
 
     public void startGame(){
-        state = State.ALIVE;
+        infoScreen = false;
     }
 
     void death(){
-        state = State.DEAD;
-        player.GRAV_ACC = 0f;
-        player.velocity = new Vector2(0,0);
-    }
-
-    void startFall(){
-        state = State.FALLING;
+        infoScreen = true;
     }
 
 
@@ -143,8 +128,8 @@ public class ObjectHandler {
         return player;
     }
 
-    public State getState() {
-        return state;
+    public Boolean getInfoScreen() {
+        return infoScreen;
     }
 
 }
